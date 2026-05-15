@@ -72,9 +72,9 @@ export default function QuizEngine({ topic, questions }: QuizEngineProps) {
           </div>
         )}
 
-        <div style={{ display: 'flex', gap: 'var(--spacing-12)', justifyContent: 'center' }}>
-          <button className="btn-primary" onClick={() => window.location.reload()}>Zkusit znovu</button>
-          <Link href={`/vypisy/${topic}`} className="btn-primary" style={{ backgroundColor: 'var(--color-parchment)', color: 'var(--color-ink)', border: '1px solid var(--color-outline-gray)' }}>
+        <div className="mobile-col mobile-w-full" style={{ display: 'flex', gap: 'var(--spacing-12)', justifyContent: 'center' }}>
+          <button className="btn-primary mobile-w-full" onClick={() => window.location.reload()}>Zkusit znovu</button>
+          <Link href={`/vypisy/${topic}`} className="btn-primary mobile-w-full mobile-text-center" style={{ backgroundColor: 'var(--color-parchment)', color: 'var(--color-ink)', border: '1px solid var(--color-outline-gray)' }}>
             Zpět na teorii
           </Link>
         </div>
@@ -172,13 +172,13 @@ export default function QuizEngine({ topic, questions }: QuizEngineProps) {
         </div>
       )}
 
-      <div style={{ marginTop: 'var(--spacing-32)', display: 'flex', justifyContent: 'flex-end' }}>
+      <div className="mobile-w-full" style={{ marginTop: 'var(--spacing-32)', display: 'flex', justifyContent: 'flex-end' }}>
         {!isSubmitted ? (
-          <button className="btn-primary" disabled={!selected} onClick={handleSubmit}>
+          <button className="btn-primary mobile-w-full" disabled={!selected} onClick={handleSubmit}>
             Zkontrolovat
           </button>
         ) : (
-          <button className="btn-primary" onClick={handleNext}>
+          <button className="btn-primary mobile-w-full" onClick={handleNext}>
             {currentIdx + 1 < questions.length ? 'Další otázka' : 'Dokončit kvíz'}
           </button>
         )}

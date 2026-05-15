@@ -141,3 +141,30 @@
 - **Verification:** `pnpm run build`
 - **Result:** Pass (0 exit code)
 
+
+### Step 1: Příprava CSS tříd a layoutu
+- **Files changed:** `src/app/globals.css`, `src/app/layout.tsx`
+- **What changed:** 
+  - Do CSS přidány třídy s `@media (max-width: 768px)` jako `desktop-only`, `mobile-col`, `mobile-p-16`, atd.
+  - V layoutu obalen levý sidebar do `desktop-only` a `main` dostal mobilní zúžený padding.
+- **Verification:** `pnpm run build`
+- **Result:** Pass (0 exit code)
+
+
+### Step 2: Navigace a vyhledávání
+- **Files changed:** `src/components/Navigation.tsx`, `src/components/SearchBar.tsx`, `src/components/PageOutline.tsx`
+- **What changed:** 
+  - Do `Navigation` a `SearchBar` přidány mobilní třídy (`mobile-col`, `mobile-w-full`). Search input se na mobilu natáhne přes zbytek dostupného místa po změně `flex-direction`.
+  - Pravé plovoucí menu `PageOutline` skryto třídou `desktop-only` - pro mobily je irelevantní.
+- **Verification:** `pnpm run build`
+- **Result:** Pass (0 exit code)
+
+
+### Step 3: Úprava přehledů (Homepage) a Kvízového Engine
+- **Files changed:** `src/components/QuizCard.tsx`, `src/components/QuizEngine.tsx`, `src/components/MegaQuizEngine.tsx`
+- **What changed:** 
+  - V `QuizCard` se tlačítka a obsah zalamují pomocí `mobile-col` a `mobile-stack-gap`.
+  - V obou kvízových enginech se tlačítka Další a Dokončit roztahují přes celou šířku kontejneru pro snadné ovládání jedním prstem.
+- **Verification:** `pnpm run build`
+- **Result:** Pass (0 exit code)
+

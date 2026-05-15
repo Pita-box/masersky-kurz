@@ -56,7 +56,7 @@ export default function PageOutline({ topic }: { topic: string }) {
 
   if (headings.length === 0) {
     return (
-      <aside style={{ 
+      <aside className="desktop-only" style={{ 
         width: '250px', 
         flexShrink: 0, 
         paddingLeft: 'var(--spacing-20)',
@@ -75,7 +75,7 @@ export default function PageOutline({ topic }: { topic: string }) {
   }
 
   return (
-    <aside style={{ 
+    <aside className="desktop-only" style={{ 
       width: '250px', 
       flexShrink: 0, 
       paddingLeft: 'var(--spacing-20)',

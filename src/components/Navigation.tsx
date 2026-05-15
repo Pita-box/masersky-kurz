@@ -4,7 +4,7 @@ import MegaQuizProgress from '@/components/MegaQuizProgress';
 
 export default function Navigation() {
   return (
-    <nav style={{
+    <nav className="mobile-col mobile-stack-gap" style={{
       display: 'flex',
       alignItems: 'center',
       justifyContent: 'space-between',
@@ -18,7 +18,7 @@ export default function Navigation() {
       <div style={{ fontWeight: 700, fontSize: '18px', fontFamily: 'var(--font-general-sans)' }}>
         <Link href="/">Masérský kurz</Link>
       </div>
-      <div style={{ display: 'flex', gap: 'var(--spacing-20)', alignItems: 'center' }}>
+      <div className="mobile-w-full" style={{ display: 'flex', gap: 'var(--spacing-20)', alignItems: 'center', justifyContent: 'space-between' }}>
         <SearchBar />
         <MegaQuizProgress />
       </div>

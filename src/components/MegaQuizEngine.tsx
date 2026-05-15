@@ -201,13 +201,13 @@ export default function MegaQuizEngine({ questions }: { questions: QuizQuestion[
         </div>
       )}
 
-      <div style={{ marginTop: 'var(--spacing-32)', display: 'flex', justifyContent: 'flex-end' }}>
+      <div className="mobile-w-full" style={{ marginTop: 'var(--spacing-32)', display: 'flex', justifyContent: 'flex-end' }}>
         {!isSubmitted ? (
-          <button className="btn-primary" disabled={!selected} onClick={handleSubmit}>
+          <button className="btn-primary mobile-w-full" disabled={!selected} onClick={handleSubmit}>
             Zkontrolovat a uložit
           </button>
         ) : (
-          <button className="btn-primary" onClick={handleNext}>
+          <button className="btn-primary mobile-w-full" onClick={handleNext}>
             {state.currentIdx + 1 < state.questionsOrder.length ? 'Další otázka' : 'Dokončit kvíz'}
           </button>
         )}

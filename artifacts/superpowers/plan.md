@@ -1,23 +1,24 @@
-# Superpowers Plan: Sidebar Scroll & Active Outline
+# Superpowers Plan: Komplexní responsivita pro celý web
 
 ## Goal
-1. Upravit levý sidebar tak, aby byl správně scrollovatelný při přibývání témat (zajistit přesnou výšku a overflow chování).
-2. Přidat `IntersectionObserver` do pravého Page Outline, aby automaticky zvýrazňoval právě čtený nadpis (`activeId`) na obrazovce.
+Vyřešit "rozsypaný" layout na menších obrazovkách (mobilech a tabletech) plošně napříč celou aplikací. Všechny komponenty, včetně kvízů, analýz a navigace, musí být plně použitelné a čitelné.
 
 ## Plan
 
-### Step 1: Vylepšení levého Sidebaru
-- **Files:** `src/components/TopicSidebar.tsx`
-- **Change:** Doladit výpočet `height: calc(100vh - 67px)` a `top: 67px` a ujistit se, že má `overflowY: auto`. Ponecháme `position: sticky`, což je pro flexboxy lepší než `fixed` (nevytrhne prvek z toku stránky) a vizuálně se chová stejně.
-- **Verify:** Okometrická kontrola na frontendu.
+### Step 1: Příprava CSS tříd a layoutu
+- **Files:** `src/app/globals.css`, `src/app/layout.tsx`
+- **Change:** Vytvoříme silné responsivní utility v CSS (např. flex wrap, zmenšení paddingů). Skryjeme levý postranní panel (`TopicSidebar`) na úzkých displejích a upravíme odsazení celého `main` obsahu.
 
-### Step 2: IntersectionObserver v Page Outline
-- **Files:** `src/components/PageOutline.tsx`
-- **Change:** Přidáme stav `activeId`. V `useEffect` vytvoříme `IntersectionObserver`, který bude sledovat všechny vybrané nadpisy (`.markdown-body h2, .markdown-body h3`). Jakmile nadpis protne vrchní část obrazovky, zapíše se jeho id do `activeId`. Aktivní odkaz pak dostane sytou barvu a případně fontWeight.
-- **Verify:** Při scrollování stránky s dlouhou teorií se menu vpravo musí dynamicky probarvovat.
+### Step 2: Navigace a vyhledávání
+- **Files:** `src/components/Navigation.tsx`, `src/components/SearchBar.tsx`, `src/components/PageOutline.tsx`
+- **Change:** Vyhledávací pole se přizpůsobí zbylému prostoru. Pravé menu (`PageOutline`) se na telefonech skryje, uvolní tak vzácné místo pro hlavní čtení. Hlavička bude hezky obtékat nebo se poskládá pod sebe.
 
-## Risks & mitigations
-- IntersectionObserver může někdy "přeskakovat", pokud je sekce příliš krátká. Nastavíme mu `rootMargin: '0px 0px -80% 0px'`, takže se nadpis aktivuje, jakmile se objeví v horních 20% obrazovky.
+### Step 3: Úprava přehledů (Homepage) a Kvízového Engine
+- **Files:** `src/app/page.tsx`, `src/components/QuizEngine.tsx`, `src/components/MegaQuizEngine.tsx`, `src/components/QuizAnalysis.tsx`
+- **Change:** Na úvodní stránce se tlačítka témat na menších zařízeních roztáhnou na celou šířku a poskládají se nad sebe. U kvízů zajistíme, že text otázky se nedeformuje a tlačítka odpovědí fungují jako velké "tap" zóny přes celou šířku obrazovky.
+
+## Verification
+- Vizuální kontrola všech zmíněných stránek ve zmenšeném (mobile) okně prohlížeče. Kód projde přes `pnpm run build`.
 
 ## Approval
-Prosím o schválení (APPROVED).
+Prosím o schválení plánu (napiš APPROVED).

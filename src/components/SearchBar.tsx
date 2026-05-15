@@ -62,7 +62,7 @@ export default function SearchBar() {
   }, []);
 
   return (
-    <div ref={containerRef} style={{ position: 'relative' }}>
+    <div ref={containerRef} className="mobile-w-full" style={{ position: 'relative', flex: 1 }}>
       <input
         ref={inputRef}
         type="text"
@@ -76,7 +76,8 @@ export default function SearchBar() {
           border: '1px solid var(--color-outline-gray)',
           fontFamily: 'var(--font-inter)',
           fontSize: '14px',
-          width: '250px'
+          width: '100%',
+          minWidth: '200px'
         }}
       />
       

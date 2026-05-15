@@ -132,3 +132,32 @@ h1, h2, h3, h4, h5, h6 {
   margin: var(--spacing-24) 0;
 }
 
+/* Responsive Utilities */
+.mobile-only {
+  display: none !important;
+}
+
+@media (max-width: 768px) {
+  .desktop-only {
+    display: none !important;
+  }
+  .mobile-only {
+    display: flex !important;
+  }
+  .mobile-col {
+    flex-direction: column !important;
+    align-items: stretch !important;
+  }
+  .mobile-p-16 {
+    padding: var(--spacing-16) !important;
+  }
+  .mobile-w-full {
+    width: 100% !important;
+  }
+  .mobile-text-center {
+    text-align: center !important;
+  }
+  .mobile-stack-gap {
+    gap: var(--spacing-12) !important;
+  }
+}

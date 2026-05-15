@@ -20,9 +20,11 @@ export default function RootLayout({
     <html lang="cs">
       <body>
         <Navigation />
-        <div style={{ display: 'flex', maxWidth: '1400px', margin: '0 auto', width: '100%', alignItems: 'flex-start' }}>
-          <TopicSidebar vypisy={vypisy} />
-          <main style={{ flex: 1, padding: 'var(--spacing-20) var(--spacing-40)', minWidth: 0 }}>
+        <div className="mobile-col" style={{ display: 'flex', maxWidth: '1400px', margin: '0 auto', width: '100%', alignItems: 'flex-start' }}>
+          <div className="desktop-only">
+            <TopicSidebar vypisy={vypisy} />
+          </div>
+          <main className="mobile-p-16" style={{ flex: 1, padding: 'var(--spacing-20) var(--spacing-40)', minWidth: 0, width: '100%' }}>
             {children}
           </main>
         </div>
