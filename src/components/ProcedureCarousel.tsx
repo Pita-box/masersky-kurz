@@ -22,7 +22,7 @@ function kategorieClass(kat: string): string {
   return map[kat] || 'priprava';
 }
 
-export default function ProcedureCarousel({ kroky, autoplayDuration = 15000 }: ProcedureCarouselProps) {
+export default function ProcedureCarousel({ kroky, autoplayDuration = 25000 }: ProcedureCarouselProps) {
   const trackRef = useRef<HTMLDivElement>(null);
   const [activeIndex, setActiveIndex] = useState(0);
   const [isPlaying, setIsPlaying] = useState(true);
@@ -45,7 +45,7 @@ export default function ProcedureCarousel({ kroky, autoplayDuration = 15000 }: P
     if (!fill) return;
     // Reset
     fill.classList.remove('animating');
-    fill.style.width = '0%';
+    /* fill.style.width = '0%'; */
     fill.style.transitionDuration = '';
     // Force reflow
     void fill.offsetWidth;

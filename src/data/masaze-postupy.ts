@@ -26,7 +26,7 @@ export interface MasazniSestava {
 
 const zada: MasazniSestava = {
   slug: 'zada',
-  nazev: 'Masáž zad',
+  nazev: '1. Masáž zad',
   emoji: '🔙',
   poziceKlienta: 'Klient leží na břiše',
   kroky: [
@@ -159,7 +159,7 @@ const zada: MasazniSestava = {
 
 const dkZezadu: MasazniSestava = {
   slug: 'dk-zezadu',
-  nazev: 'Dolní končetiny zezadu',
+  nazev: '2. Dolní končetiny zezadu',
   emoji: '🦵',
   poziceKlienta: 'Klient leží na břiše',
   kroky: [
@@ -355,7 +355,7 @@ const dkZezadu: MasazniSestava = {
 
 const dkZepredu: MasazniSestava = {
   slug: 'dk-zepredu',
-  nazev: 'Dolní končetiny zepředu',
+  nazev: '3. Dolní končetiny zepředu',
   emoji: '🦿',
   poziceKlienta: 'Klient leží na zádech',
   kroky: [
@@ -380,7 +380,7 @@ const dkZepredu: MasazniSestava = {
 
 const hrudnik: MasazniSestava = {
   slug: 'hrudnik',
-  nazev: 'Masáž hrudníku',
+  nazev: '4. Masáž hrudníku',
   emoji: '🫁',
   poziceKlienta: 'Klient leží na zádech',
   kroky: [
@@ -400,7 +400,7 @@ const hrudnik: MasazniSestava = {
 
 const bricho: MasazniSestava = {
   slug: 'bricho',
-  nazev: 'Masáž břicha',
+  nazev: '5. Masáž břicha',
   emoji: '🫃',
   poziceKlienta: 'Klient leží na zádech, pokrčené nohy',
   kroky: [
@@ -419,7 +419,7 @@ const bricho: MasazniSestava = {
 
 const hk: MasazniSestava = {
   slug: 'horni-koncetiny',
-  nazev: 'Masáž horních končetin',
+  nazev: '6. Masáž horních končetin',
   emoji: '💪',
   poziceKlienta: 'Klient leží na zádech (rameno vsedě)',
   kroky: [
@@ -447,7 +447,7 @@ const hk: MasazniSestava = {
 
 const sije: MasazniSestava = {
   slug: 'sije',
-  nazev: 'Masáž šíje',
+  nazev: '7. Masáž šíje',
   emoji: '🧣',
   poziceKlienta: 'Klient sedí',
   kroky: [
@@ -467,6 +467,22 @@ const sije: MasazniSestava = {
   ],
 };
 
+const kompletniMasaz: MasazniSestava = {
+  slug: 'kompletni-masaz',
+  nazev: '8. Kompletní masáž',
+  emoji: '🏃‍♂️‍➡️', // Případně můžete změnit na jiné emoji dle preferencí
+  poziceKlienta: 'Kombinovaná (na břiše, na zádech, vsedě)',
+  kroky: [
+    ...zada.kroky,
+    ...dkZezadu.kroky,
+    ...dkZepredu.kroky,
+    ...hrudnik.kroky,
+    ...bricho.kroky,
+    ...hk.kroky,
+    ...sije.kroky,
+  ],
+};
+
 // Export všech sestav
 export const vsechnySestavy: MasazniSestava[] = [
   zada,
@@ -476,6 +492,7 @@ export const vsechnySestavy: MasazniSestava[] = [
   bricho,
   hk,
   sije,
+  kompletniMasaz,
 ];
 
 export function getSestavaBySlug(slug: string): MasazniSestava | undefined {
