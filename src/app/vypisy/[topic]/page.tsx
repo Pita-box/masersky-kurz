@@ -3,6 +3,7 @@ import { getQuizByTopic } from "@/lib/quiz";
 import ReactMarkdown from "react-markdown";
 import rehypeSlug from "rehype-slug";
 import rehypeAutolinkHeadings from "rehype-autolink-headings";
+import rehypeRaw from "rehype-raw";
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import PageOutline from "@/components/PageOutline";
@@ -43,7 +44,7 @@ export default async function VypisDetailPage({ params }: { params: Promise<{ to
         <div className="card" style={{ backgroundColor: 'var(--color-canvas)' }}>
           <div className="markdown-body">
             <ReactMarkdown 
-              rehypePlugins={[rehypeSlug, [rehypeAutolinkHeadings, { behavior: 'wrap' }]]}
+              rehypePlugins={[rehypeRaw, rehypeSlug, [rehypeAutolinkHeadings, { behavior: 'wrap' }]]}
             >
               {vypis.content}
             </ReactMarkdown>

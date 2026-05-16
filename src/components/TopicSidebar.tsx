@@ -57,7 +57,24 @@ export default function TopicSidebar({ vypisy }: { vypisy: VypisLink[] }) {
         })}
       </div>
 
-      <div style={{ marginTop: 'var(--spacing-32)', paddingTop: 'var(--spacing-16)', borderTop: '1px solid var(--color-outline-gray)' }}>
+      <div style={{ marginTop: 'var(--spacing-32)', paddingTop: 'var(--spacing-16)', borderTop: '1px solid var(--color-outline-gray)', display: 'flex', flexDirection: 'column', gap: 'var(--spacing-8)' }}>
+        <Link
+          href="/prakticka-cast"
+          style={{
+            display: 'block',
+            padding: 'var(--spacing-12)',
+            borderRadius: 'var(--radius-default)',
+            backgroundColor: pathname.startsWith('/prakticka-cast') ? 'var(--color-parchment)' : 'transparent',
+            border: pathname.startsWith('/prakticka-cast') ? '1px solid var(--color-outline-gray)' : '1px solid transparent',
+            color: 'var(--color-ink)',
+            fontWeight: 600,
+            fontSize: '14px',
+            textDecoration: 'none',
+            textAlign: 'center'
+          }}
+        >
+          🤲 Praktická část
+        </Link>
         <Link
           href="/mega-kviz"
           style={{
