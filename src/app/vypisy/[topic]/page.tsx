@@ -41,9 +41,9 @@ export default async function VypisDetailPage({ params }: { params: Promise<{ to
       <div style={{ flex: 1, minWidth: 0 }}>
         <MobileActions />
 
-        <div className="card" style={{ backgroundColor: 'var(--color-canvas)' }}>
+        <div className="card" style={{ backgroundColor: 'var(--color-canvas)', paddingBottom: '10rem;' }}>
           <div className="markdown-body">
-            <ReactMarkdown 
+            <ReactMarkdown
               rehypePlugins={[rehypeRaw, rehypeSlug, [rehypeAutolinkHeadings, { behavior: 'wrap' }]]}
             >
               {vypis.content}
@@ -61,7 +61,7 @@ export default async function VypisDetailPage({ params }: { params: Promise<{ to
           <MobileActions />
         </div>
       </div>
-      
+
       <PageOutline topic={resolvedParams.topic} />
     </div>
   );

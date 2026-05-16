@@ -21,6 +21,7 @@ export default function Navigation() {
       <div className="mobile-w-full" style={{ display: 'flex', gap: 'var(--spacing-20)', alignItems: 'center', justifyContent: 'space-between' }}>
         <SearchBar />
         <MegaQuizProgress />
+        <Link href="/prakticka-cast">🙌</Link>
       </div>
     </nav>
   );

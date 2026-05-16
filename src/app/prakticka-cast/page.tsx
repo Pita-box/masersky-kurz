@@ -21,7 +21,6 @@ export default function PraktickaCastPage() {
             style={{
               display: 'block',
               textDecoration: 'none',
-              backgroundColor: 'var(--color-parchment)',
               borderRadius: 'var(--radius-cards)',
               padding: 'var(--spacing-24)',
               border: '1px solid var(--color-outline-gray)',
@@ -41,9 +40,8 @@ export default function PraktickaCastPage() {
             }}>
               {sestava.nazev}
             </h3>
-            <p style={{
+            <p className="text-opacity" style={{
               fontSize: '14px',
-              color: 'var(--color-stone)',
               marginBottom: 'var(--spacing-12)',
             }}>
               {sestava.poziceKlienta}
@@ -60,9 +58,8 @@ export default function PraktickaCastPage() {
               }}>
                 {sestava.kroky.length} kroků
               </span>
-              <span style={{
+              <span className="text-link" style={{
                 fontSize: '13px',
-                color: 'var(--color-ink)',
                 fontWeight: 600,
               }}>
                 Spustit →
@@ -73,11 +70,29 @@ export default function PraktickaCastPage() {
       </div>
 
       <style>{`
+      .text-opacity {
+      color: var(--color-stone);
+      }
+      .text-link {
+        color: var(--color-ink);
+      }
+      .procedure-card{
+        background-color: var(--color-parchment);
+      }
         .procedure-card:hover {
+          background-color: var(--color-stone);
           transform: translateY(-2px);
           box-shadow: var(--shadow-md);
           border-color: var(--color-stone) !important;
+          color:var(--color-ash);
         }
+        .procedure-card:hover .text-opacity {
+          color: var(--color-ash);
+        }
+          .procedure-card:hover .text-link {
+          color: var(--color-sunset-orange);
+        }
+        
       `}</style>
     </div>
   );

@@ -100,18 +100,21 @@ export default function PageOutline({ topic }: { topic: string }) {
                 <a
                   href={`#${h.id}`}
                   style={{
-                    color: isActive ? 'var(--color-ink)' : 'var(--color-ash)',
+                    color: isActive ? 'var(--color-sunset-orange)' : 'var(--color-ash)',
                     fontWeight: isActive ? 600 : 400,
                     textDecoration: 'none',
                     fontSize: '14px',
                     display: 'block',
-                    lineHeight: 1.4,
+                    lineHeight: 1.8,
                     transition: 'all 0.2s',
-                    borderLeft: isActive ? '2px solid var(--color-ink)' : '2px solid transparent',
+                    borderLeft: isActive ? '2px solid var(--color-ash)' : '2px solid transparent',
+                    backgroundColor: isActive ? 'var(--color-whisper-gray)' : 'transparent',
+                    borderRadius: 'var(--radius-default)',
                     paddingLeft: isActive ? '8px' : '0'
+
                   }}
-                  onMouseOver={(e) => { if (!isActive) e.currentTarget.style.color = 'var(--color-ink)' }}
-                  onMouseOut={(e) => { if (!isActive) e.currentTarget.style.color = 'var(--color-ash)' }}
+                  onMouseOver={(e) => { if (!isActive) e.currentTarget.style.color = 'var(--color-ink)', e.currentTarget.style.backgroundColor = 'var(--color-whisper-gray)', e.currentTarget.style.padding = '3px 8px' }}
+                  onMouseOut={(e) => { if (!isActive) e.currentTarget.style.color = 'var(--color-ash)', e.currentTarget.style.backgroundColor = 'transparent', e.currentTarget.style.padding = '0' }}
                 >
                   {h.text}
                 </a>

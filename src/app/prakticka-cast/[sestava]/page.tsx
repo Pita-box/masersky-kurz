@@ -28,7 +28,7 @@ export default async function SestavaPage({ params }: PageProps) {
           alignItems: 'center',
           gap: '6px',
           fontSize: '14px',
-          color: 'var(--color-stone)',
+          color: 'var(--color-sunset-orange)',
           marginBottom: 'var(--spacing-16)',
           textDecoration: 'none',
           fontWeight: 500,
