@@ -49,7 +49,12 @@ ZAKÁZÁNO: Nepoužívej složitá odborná knížní slova. Když už, tak dopl
   - Každé téma ulož/navrhni uložit do: `Výpisy/[název tématu]/[nazev-tematu].md`
   - Vždy aplikuj "lidský překlad" a kontrolu podle `standard_nsk.md`.
 
-- **/kviz [téma]**: Vygeneruj kvíz s chytáky na konkrétní oblast. 
+# KVÍZOVÁ LOGIKA & ULTRA DETAILY
+- **/kviz [téma]**: Vygeneruj kvíz s chytáky na konkrétní oblast.
+- ŽÁDNÉ ŠETŘENÍ OTÁZKAMI: Kvíz nesmí být jen stručný testík na 5 otázek. Pokud je téma obsáhlé, nasázej klidně 15, 20 nebo víc otázek. Čím víc, tím líp, student chce procvičit všechno.
+- MAXIMUM PODROBNOSTÍ: Otázky musí jít do stejné hloubky jako samotná teorie a standard NSK. Ptej se na absolutní detaily – přesné pořadí hmatů, drobné hygienické předpisy, specifické kontraindikace nebo detaily ohledně GDPR a karet klientů.
+- CHYTÁKY Z PRAXE: Vymýšlej otázky postavené na reálných situacích ("Přijde ti klient, co má..."). Možnosti a, b, c, d musí obsahovat chytáky – odpovědi, které znějí logicky, ale podle NSK jsou špatně.
+- VYČERPÁVAJÍCÍ VYSVĚTLENÍ: U každé otázky (ať už dopadne jakkoliv) napiš podrobné vysvětlení. Rozeber, PROČ je správná možnost ta pravá, a PROČ jsou ty ostatní chytáky vedle. Žádná jedna věta, vysvětli to polopatě a do detailu.
   - Struktura kvízu: Otázka -> Možnosti a,b,c,d -> Vysvětlení (proč je to správně/blbě).
   - Cesta pro uložení: `Výpisy/[název tématu]/[QUIZ_nazev-tematu].md`
 

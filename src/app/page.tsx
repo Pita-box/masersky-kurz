@@ -8,7 +8,7 @@ export default function Home() {
   return (
     <div>
       <main>
-        <h1>Masérský kurz - Platforma</h1>
+        <h1>Masérský kurz</h1>
         <p style={{ color: 'var(--color-ash)', marginBottom: 'var(--spacing-32)' }}>
           Vítejte ve výukové a kvízové aplikaci.
         </p>

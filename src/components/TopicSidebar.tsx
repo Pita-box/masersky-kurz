@@ -21,8 +21,8 @@ export default function TopicSidebar({ vypisy }: { vypisy: VypisLink[] }) {
       width: '280px',
       flexShrink: 0,
       borderRight: '1px solid var(--color-outline-gray)',
-      padding: 'var(--spacing-20)',
-      height: 'calc(100vh - 67px)',
+      padding: 'var(--spacing-20) var(--spacing-20) var(--spacing-20) 0',
+      height: 'calc(100dvh - 67px)',
       position: 'sticky',
       top: '67px',
       overflowY: 'auto',
@@ -35,8 +35,8 @@ export default function TopicSidebar({ vypisy }: { vypisy: VypisLink[] }) {
         {vypisy.map((v, idx) => {
           const isActive = pathname.includes(`/vypisy/${v.topic}`) || pathname.includes(`/kvizy/${v.topic}`);
           return (
-            <Link 
-              key={v.id} 
+            <Link
+              key={v.id}
               href={`/vypisy/${v.topic}`}
               style={{
                 display: 'block',
@@ -56,9 +56,9 @@ export default function TopicSidebar({ vypisy }: { vypisy: VypisLink[] }) {
           );
         })}
       </div>
-      
+
       <div style={{ marginTop: 'var(--spacing-32)', paddingTop: 'var(--spacing-16)', borderTop: '1px solid var(--color-outline-gray)' }}>
-        <Link 
+        <Link
           href="/mega-kviz"
           style={{
             display: 'block',

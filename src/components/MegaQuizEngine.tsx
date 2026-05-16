@@ -16,52 +16,126 @@ export default function MegaQuizEngine({ questions }: { questions: QuizQuestion[
       const savedState = await getMegaQuizState();
       
       if (savedState) {
-        // Obnovujeme uložený stav
-        setState(savedState);
-        
-        // Zkusíme obnovit volbu, pokud jsme už na otázku odpověděli ale nešli dál?
-        // Ne, stav ukazuje `currentIdx`. Pokud `answers` má délku větší než `currentIdx`, znamená to že jsme už odpověděli.
-        const currentAnswer = savedState.answers.find(a => 
-          a.questionId === savedState.questionsOrder[savedState.currentIdx]?.questionId &&
-          a.topic === savedState.questionsOrder[savedState.currentIdx]?.topic
+        // === MERGE LOGIKA ===
+        // Porovnáme uložený stav s aktuálními otázkami.
+        // Nové otázky přidáme na konec fronty, smazané odstraníme z nezodpovězených.
+        // Průběh uživatele (odpovědi, pozice) zůstane nedotčený.
+
+        const savedKeys = new Set(
+          savedState.questionsOrder.map(s => `${s.topic}-${s.questionId}`)
         );
-        
+        const currentKeys = new Set(
+          questions.map(q => `${(q.topic || '')}-${q.id}`)
+        );
+
+        // Nové otázky = existují v aktuálním setu, ale NE v uloženém pořadí
+        const newQuestions = questions.filter(
+          q => !savedKeys.has(`${q.topic}-${q.id}`)
+        );
+
+        // Smazané otázky = jsou v uloženém pořadí, ale už neexistují v aktuálních kvízech
+        const removedKeys = new Set(
+          savedState.questionsOrder
+            .filter(s => !currentKeys.has(`${s.topic}-${s.questionId}`))
+            .map(s => `${s.topic}-${s.questionId}`)
+        );
+
+        const needsMerge = newQuestions.length > 0 || removedKeys.size > 0;
+
+        let mergedState = savedState;
+
+        if (needsMerge) {
+          // 1) Odstraníme smazané otázky z fronty (pouze nezodpovězené)
+          //    Zodpovězené zůstávají v answers pro historii.
+          let updatedOrder = savedState.questionsOrder.filter(
+            s => !removedKeys.has(`${s.topic}-${s.questionId}`)
+          );
+
+          // 2) Posuneme currentIdx – kolik smazaných otázek bylo PŘED aktuální pozicí?
+          const removedBeforeCurrent = savedState.questionsOrder
+            .slice(0, savedState.currentIdx)
+            .filter(s => removedKeys.has(`${s.topic}-${s.questionId}`))
+            .length;
+          const adjustedIdx = Math.max(0, savedState.currentIdx - removedBeforeCurrent);
+
+          // 3) Nové otázky zamícháme a přidáme na KONEC fronty
+          const newOrder = newQuestions.map(q => ({ topic: q.topic || '', questionId: q.id }));
+          for (let i = newOrder.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [newOrder[i], newOrder[j]] = [newOrder[j], newOrder[i]];
+          }
+          updatedOrder = [...updatedOrder, ...newOrder];
+
+          // 4) Zamícháme odpovědi pro nové otázky
+          const updatedShuffledMap = { ...savedState.shuffledOptionsByQuestion };
+          for (const q of newQuestions) {
+            const opts: ('a'|'b'|'c'|'d')[] = ['a', 'b', 'c', 'd'];
+            for (let i = opts.length - 1; i > 0; i--) {
+              const j = Math.floor(Math.random() * (i + 1));
+              [opts[i], opts[j]] = [opts[j], opts[i]];
+            }
+            updatedShuffledMap[`${q.topic}-${q.id}`] = opts;
+          }
+
+          // 5) Odstraníme shuffled options pro smazané otázky
+          for (const key of removedKeys) {
+            delete updatedShuffledMap[key];
+          }
+
+          mergedState = {
+            questionsOrder: updatedOrder,
+            currentIdx: adjustedIdx,
+            answers: savedState.answers, // Zachováme všechny odpovědi (i pro smazané, pro historii)
+            shuffledOptionsByQuestion: updatedShuffledMap
+          };
+
+          // Uložíme sloučený stav (Supabase + localStorage fallback)
+          saveMegaQuizState(mergedState);
+        }
+
+        setState(mergedState);
+
+        // Obnovíme volbu, pokud jsme na aktuální otázku už odpověděli
+        const currentAnswer = mergedState.answers.find(a => 
+          a.questionId === mergedState.questionsOrder[mergedState.currentIdx]?.questionId &&
+          a.topic === mergedState.questionsOrder[mergedState.currentIdx]?.topic
+        );
         if (currentAnswer) {
           setSelected(currentAnswer.selectedOption);
           setIsSubmitted(true);
         }
-      } else {
-        // Inicializujeme nový mega kvíz
-        if (questions.length === 0) return;
-        
-        // Vytvoříme náhodné pořadí otázek
-        const order = questions.map(q => ({ topic: q.topic || '', questionId: q.id }));
-        for (let i = order.length - 1; i > 0; i--) {
-          const j = Math.floor(Math.random() * (i + 1));
-          [order[i], order[j]] = [order[j], order[i]];
-        }
-        
-        // Vytvoříme a uložíme si předem i zamíchané odpovědi pro každou otázku,
-        // aby po refreshu měly otázky odpovědi stále stejně zpřeházené.
-        const shuffledMap: Record<string, ('a'|'b'|'c'|'d')[]> = {};
-        for (const q of questions) {
-          const opts: ('a'|'b'|'c'|'d')[] = ['a', 'b', 'c', 'd'];
-          for (let i = opts.length - 1; i > 0; i--) {
-            const j = Math.floor(Math.random() * (i + 1));
-            [opts[i], opts[j]] = [opts[j], opts[i]];
-          }
-          shuffledMap[`${q.topic}-${q.id}`] = opts;
-        }
 
-        const newState: MegaQuizState = {
-          questionsOrder: order,
-          currentIdx: 0,
-          answers: [],
-          shuffledOptionsByQuestion: shuffledMap
-        };
-        setState(newState);
-        saveMegaQuizState(newState);
+        setLoading(false);
+        return;
       }
+
+      // === INICIALIZACE NOVÉHO MEGA KVÍZU (žádný uložený stav) ===
+      if (questions.length === 0) { setLoading(false); return; }
+      
+      const order = questions.map(q => ({ topic: q.topic || '', questionId: q.id }));
+      for (let i = order.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [order[i], order[j]] = [order[j], order[i]];
+      }
+      
+      const shuffledMap: Record<string, ('a'|'b'|'c'|'d')[]> = {};
+      for (const q of questions) {
+        const opts: ('a'|'b'|'c'|'d')[] = ['a', 'b', 'c', 'd'];
+        for (let i = opts.length - 1; i > 0; i--) {
+          const j = Math.floor(Math.random() * (i + 1));
+          [opts[i], opts[j]] = [opts[j], opts[i]];
+        }
+        shuffledMap[`${q.topic}-${q.id}`] = opts;
+      }
+
+      const newState: MegaQuizState = {
+        questionsOrder: order,
+        currentIdx: 0,
+        answers: [],
+        shuffledOptionsByQuestion: shuffledMap
+      };
+      setState(newState);
+      saveMegaQuizState(newState);
       setLoading(false);
     }
     loadState();

@@ -41,46 +41,70 @@ export function getQuizByTopic(topic: string): Quiz | null {
 
   const questions: QuizQuestion[] = [];
   
-  // Split the file into blocks by "### Otázka"
-  const blocks = content.split(/(?=### Otázka)/g);
+  // Split the file into blocks by "### "
+  const blocks = content.split(/(?=### )/g);
   
   let id = 1;
   for (const block of blocks) {
-    if (!block.trim() || !block.includes('### Otázka')) continue;
+    if (!block.trim() || !block.includes('### ')) continue;
     
     // Extract question text
-    const qMatch = block.match(/### Otázka \d+:\s*(.+)/);
+    const qMatch = block.match(/### (?:Otázka )?\d+[:.]?\s*(.+)/);
     if (!qMatch) continue;
 
-    // Extract options (A, B, C, D)
-    const aMatch = block.match(/\*\*A\)\*\*\s*(.+)/i) || block.match(/- a\)\s*(.+)/i);
-    const bMatch = block.match(/\*\*B\)\*\*\s*(.+)/i) || block.match(/- b\)\s*(.+)/i);
-    const cMatch = block.match(/\*\*C\)\*\*\s*(.+)/i) || block.match(/- c\)\s*(.+)/i);
-    const dMatch = block.match(/\*\*D\)\*\*\s*(.+)/i) || block.match(/- d\)\s*(.+)/i);
+    // Extract options
+    const aMatch = block.match(/(?:\*\*A\)\*\*|- \[.\] a\))?\s*(.+)/i) || block.match(/- a\)\s*(.+)/i);
+    const bMatch = block.match(/(?:\*\*B\)\*\*|- \[.\] b\))?\s*(.+)/i) || block.match(/- b\)\s*(.+)/i);
+    const cMatch = block.match(/(?:\*\*C\)\*\*|- \[.\] c\))?\s*(.+)/i) || block.match(/- c\)\s*(.+)/i);
+    const dMatch = block.match(/(?:\*\*D\)\*\*|- \[.\] d\))?\s*(.+)/i) || block.match(/- d\)\s*(.+)/i);
 
-    // Extract correct answer (handles both old and new formats, ignores "(Chyták!)")
-    const correctMatch = block.match(/\*\*Správná odpověď:\*\*\s*\*\*([A-D])\*\*/i) || block.match(/\*\*Správně:\*\*\s*([abcd])/i);
-    
+    // Extract exact options ignoring the markdown checkbox
+    const extractOpt = (letter: string) => {
+      const regex = new RegExp(`(?:\\*\\*${letter}\\)\\*\\*|- \\[.\\] ${letter}\\)|- ${letter}\\))\\s*(.+)`, 'i');
+      const m = block.match(regex);
+      return m ? m[1].trim() : '';
+    };
+
+    const optA = extractOpt('a');
+    const optB = extractOpt('b');
+    const optC = extractOpt('c');
+    const optD = extractOpt('d');
+
+    if (!optA || !optB || !optC || !optD) continue;
+
+    // Extract correct answer
+    let correctLetter = '';
+    const oldCorrectMatch = block.match(/\*\*Správná odpověď:\*\*\s*\*\*([A-D])\*\*/i) || block.match(/\*\*Správně:\*\*\s*([abcd])/i);
+    if (oldCorrectMatch) {
+      correctLetter = oldCorrectMatch[1].toLowerCase();
+    } else {
+      // Look for - [x]
+      const checkMatch = block.match(/- \[[xX]\] ([a-d])\)/i);
+      if (checkMatch) {
+        correctLetter = checkMatch[1].toLowerCase();
+      }
+    }
+
     // Extract explanation
-    const explMatch = block.match(/\*Vysvětlení:\*\s*([\s\S]+?)(?=<\/details>|$)/i) || block.match(/\*\*Vysvětlení:\*\*\s*([\s\S]+?)(?=\*\*Otázka:\*\*|$)/i);
+    const explMatch = block.match(/\*Vysvětlení:\*\s*([\s\S]+?)(?=<\/details>|$)/i) || block.match(/\*\*Vysvětlení:\*\*\s*([\s\S]+?)(?=### |$)/i);
 
-    if (qMatch && aMatch && bMatch && cMatch && dMatch && correctMatch && explMatch) {
+    if (qMatch && correctLetter && explMatch) {
       questions.push({
         id: id++,
         topic,
         text: qMatch[1].trim(),
         options: {
-          a: aMatch[1].trim(),
-          b: bMatch[1].trim(),
-          c: cMatch[1].trim(),
-          d: dMatch[1].trim(),
+          a: optA,
+          b: optB,
+          c: optC,
+          d: optD,
         },
-        correctAnswer: correctMatch[1].toLowerCase() as 'a' | 'b' | 'c' | 'd',
+        correctAnswer: correctLetter as 'a' | 'b' | 'c' | 'd',
         explanation: explMatch[1].trim(),
       });
     } else {
       console.warn("Něco chybí v bloku:", {
-        q: !!qMatch, a: !!aMatch, b: !!bMatch, c: !!cMatch, d: !!dMatch, correct: !!correctMatch, expl: !!explMatch
+        q: !!qMatch, opts: !!(optA && optB && optC && optD), correct: !!correctLetter, expl: !!explMatch
       });
     }
   }

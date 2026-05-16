@@ -15,7 +15,7 @@ export default function PageOutline({ topic }: { topic: string }) {
 
   useEffect(() => {
     let observer: IntersectionObserver;
-    
+
     // We wait a tick for the markdown to render and DOM to update
     const timer = setTimeout(() => {
       const elements = Array.from(document.querySelectorAll('.markdown-body h2, .markdown-body h3'));
@@ -26,7 +26,7 @@ export default function PageOutline({ topic }: { topic: string }) {
           level: el.tagName === 'H2' ? 2 : 3
         };
       }).filter(h => h.id); // Only include headings with an ID
-      
+
       setHeadings(newHeadings);
 
       // Setup Intersection Observer
@@ -45,7 +45,7 @@ export default function PageOutline({ topic }: { topic: string }) {
       elements.forEach(el => {
         if (el.id) observer.observe(el);
       });
-      
+
     }, 100);
 
     return () => {
@@ -56,28 +56,28 @@ export default function PageOutline({ topic }: { topic: string }) {
 
   if (headings.length === 0) {
     return (
-      <aside className="desktop-only" style={{ 
-        width: '250px', 
-        flexShrink: 0, 
+      <aside className="desktop-only" style={{
+        width: '250px',
+        flexShrink: 0,
         paddingLeft: 'var(--spacing-20)',
         position: 'sticky',
         top: '90px',
         height: 'calc(100vh - 90px)',
         overflowY: 'auto'
       }}>
-         <div>
-            <Link href={`/kvizy/${topic}`} className="btn-primary" style={{ display: 'block', textAlign: 'center', marginBottom: 'var(--spacing-24)', backgroundColor: 'var(--color-parchment)', color: 'var(--color-ink)', border: '1px solid var(--color-outline-gray)' }}>
-              Spustit kvíz k tématu
-            </Link>
-         </div>
+        <div>
+          <Link href={`/kvizy/${topic}`} className="btn-primary" style={{ display: 'block', textAlign: 'center', marginBottom: 'var(--spacing-24)', backgroundColor: 'var(--color-parchment)', color: 'var(--color-ink)', border: '1px solid var(--color-outline-gray)' }}>
+            Spustit kvíz k tématu
+          </Link>
+        </div>
       </aside>
     );
   }
 
   return (
-    <aside className="desktop-only" style={{ 
-      width: '250px', 
-      flexShrink: 0, 
+    <aside className="desktop-only" style={{
+      width: '250px',
+      flexShrink: 0,
       paddingLeft: 'var(--spacing-20)',
       position: 'sticky',
       top: '90px',
@@ -85,7 +85,7 @@ export default function PageOutline({ topic }: { topic: string }) {
       overflowY: 'auto'
     }}>
       <div>
-        <Link href={`/kvizy/${topic}`} className="btn-primary" style={{ display: 'block', textAlign: 'center', marginBottom: 'var(--spacing-24)', backgroundColor: 'var(--color-parchment)', color: 'var(--color-ink)', border: '1px solid var(--color-outline-gray)' }}>
+        <Link href={`/kvizy/${topic}`} className="btn-primary" style={{ display: 'block', textAlign: 'center', marginBottom: 'var(--spacing-24)', border: '1px solid var(--color-outline-gray)' }}>
           Spustit kvíz k tématu
         </Link>
 
@@ -97,7 +97,7 @@ export default function PageOutline({ topic }: { topic: string }) {
             const isActive = activeId === h.id;
             return (
               <li key={i} style={{ paddingLeft: h.level === 3 ? '16px' : '0' }}>
-                <a 
+                <a
                   href={`#${h.id}`}
                   style={{
                     color: isActive ? 'var(--color-ink)' : 'var(--color-ash)',
