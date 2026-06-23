@@ -33,7 +33,7 @@ Kontraindikace znamená, že masáž je zakázaná buď úplně (celková), nebo
 
 ## 3. Masáž při kožních potížích (Dle domluvy z "AI")
 Kůže dělíme na infekční (nakažlivé) a neinfekční.
-*   **Infekční (NESAHEJ):** Bakterie (impetigo, beďary/furunkl), Virové (opar, bradavice), Plísně (mykózy nohou), Paraziti (svrab, vši). V těchto případech je masáž zakázána!
+*   **Infekční (NESAHEJ):** Bakterie (impetigo, beďary/furunkl), Virové (herpes, opar např. pásový opar, neštovice, bradavice), Plísně (mykózy nohou), Paraziti (střevní a kožní: hlavně pozor na svrab a vši! pak sem patří klíště, blechy). V těchto případech je masáž zakázána!
 *   **Neinfekční (LZE MASÍROVAT s opatrností):** Ekzém (pokud není mokvavý a v zánětu), lupénka, akné, suchá kůže (zde naopak přidáme víc oleje). 
 
 ---

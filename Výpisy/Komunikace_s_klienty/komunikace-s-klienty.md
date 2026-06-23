@@ -26,6 +26,8 @@ Každý klient musí mít svou kartu. Je to tvoje "kuchařka" pro další návš
 *   Zdravotní záznamy (tlak, alergie, problémy)
 *   Průběžné záznamy (kdy tu byl, co se mu dělalo za úkon, jaká byla reakce)
 
+> Zde aplikujeme vizuální vyšetření (držení těla, stav kůže), podpalčí vyšetření (palcem --> ztuhlost jakých svalů), funkční vyšetření (nemůže se pohnout rukama dozadu --> problém s krčním páteřem)
+
 > **Co bys měl vědět navíc (NSK) – GDPR:** 
 > Karta obsahuje citlivé osobní údaje. Musíš klientovi říct, že jeho údaje zpracováváš (GDPR) a musí s tím souhlasit (nejlépe podpis na kartu). Papírové karty musí být **pod zámkem** (ve skříni) a počítač/notebook musí být **zaheslovaný**.
 

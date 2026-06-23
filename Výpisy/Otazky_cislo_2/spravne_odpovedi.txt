@@ -1,0 +1,104 @@
+1. Rovina střední (mediální) rozděluje tělo na: **A) pravou a levou polovinu**
+*(Poznámka: Vaše zdroje definují pouze rovinu horizontální, vertikální a frontální. Toto je externí anatomická znalost).*
+
+2. Který směr se používá u končetin: **A) proximální**
+*(Poznámka: Vaše zdroje pojem proximální používají v souvislosti s klouby, ale přímá definice směrů chybí. Jedná se o externí anatomickou znalost).*
+
+3. Co je flexe: **A) ohnutí**.
+
+4. Ve kterém kloubu je pohyb abdukce? **C) rameno**.
+
+5. Co nepatří mezi ploché kosti: **b) stehenní kost** (patří mezi dlouhé kosti).
+
+6. Kde se tvoří červené krvinky: **b) kostní dřen**.
+
+7. Které spojení kostí je nejméně pohyblivé: **b) spojení švy**.
+
+8. Kostra tvoří: **c) pevnou a pasivně pohyblivou oporu těla**.
+
+9. Kolik je hrudních obratlů? **a) 12**.
+
+10. Páteř se skládá z: **b) 33-34 obratlů**.
+
+11. Kolik má obratel trnových výběžků: **a) 1** 
+*(Poznámka: Zdroje zmiňují existenci trnových výběžků u obratlů, ale přesný počet na jeden obratel není v materiálech specifikován. Jde o externí anatomickou znalost).*
+
+12. Kolik je meziobratlových plotének? **a) 23**
+*(Poznámka: Ve zdrojích je zmíněna přítomnost plotének a celkový počet 24 samostatných obratlů, přesné číslo 23 je však externí medicínská znalost).*
+
+13. Kolik párů žeber se označuje jako „pravá žebra“: **c) 7**.
+
+14. Co nepatří k horní končetině: **c) hrudník a páteř** (ty patří k osové kostře).
+
+15. Pohyb končetin zajištuje: **b) příčné pruhové svalstvo**.
+
+16. Co je základní vlastnost svalové tkáně: **b) kontrakce**
+*(Poznámka: Zdroje sice popisují ohyb, natažení a pohyb svalu, ale pojem kontrakce jakožto základní definici vlastnosti přímo nezmiňují. Jde o externí znalost).*
+
+17. Co je kontrakce: **a) stažení**
+*(Poznámka: Zdroje mluví o svalových stazích např. u srdce, přímo slovo kontrakce = stažení je však externí znalost).*
+
+18. Jaká je funkce velkého prsního svalů: **a) připažení** (ve zdrojích definováno jako addukce, což znamená připažení k tělu).
+
+19. Co je hlavní vdechový sval? **Bránice**.
+
+20. Do jaké skupiny patří čtyřhranný sval bederní: **a) zadní skupina břišních svalů**.
+
+21. Kolik částí má sval deltový: **a) 3**.
+
+21. (Druhá otázka č. 21) Který sval je nejmohutnější: **b) čtyřhlavý sval stehenní**
+*(Poznámka: Zdroje výslovně jmenují pouze nejdelší sval těla – krejčovský, určení kvadricepsu jako nejmohutnějšího je externí znalost).*
+
+22. Kolik litrů krve má muž? **a) 4,5-6** (Zdroje uvádí obecně, že dospělý člověk má 5 litrů krve, rozpětí 4,5-6 litrů je nejblíže přesné fyziologii pro muže).
+
+23. *(V zadání chybí otázka, pravděpodobně "Co je to svalový hypertonus / tonus?")* Odpověď: **a) zvýšené klidové napětí svalů**.
+
+24. Co nepatří do hlezenního kloubu: **b) nártní kosti**
+*(Poznámka: Externí anatomická znalost).*
+
+25. Jaký má tvar trapezový sval: **Kosočtverec**.
+
+26. Mezi svaly nepatří: **b) ušní boltec** (je to chrupavka, zatímco jazyk a srdce jsou svaly).
+
+27. Mezi kosti dolní končetiny nepatří: **c) vřetenní kost** (patří k horní končetině).
+
+28. Co je hlavní funkce kůže: **a) ochranna organismu**.
+
+29. Která masérská technika zlepšuje prokrvení: **c) sportovní** (všechny druhy hmatů a masáží obecně zlepšují prokrvení a krevní oběh, vy však studujete primárně sportovní).
+
+30. Hlavní funkce srdce je: **b) pumpování krve**.
+
+31. Kolik má srdce dutin: **b) 4**.
+
+32. Okysličená krev proudí: **Tepnami**.
+
+33. Hlavní funkcí červených krvinek je: *(Upozornění: ve vašem zadání testu chybí správná možnost!)* Vaše zdroje jasně uvádějí, že červené krvinky zajišťují **přenos kyslíku**. Z nabízených možností (obrana, srážení, imunita) neplatí žádná – imunita a obrana je úkol bílých krvinek a srážení krve dělají krevní destičky.
+
+34. *(V zadání chybí otázka, pravděpodobně zní "Co je krevní tlak?")* Odpověď: **b) tlak krve na stěnu cév**
+*(Poznámka: Externí zdravotnická znalost).*
+
+35. *(V zadání chybí otázka, pravděpodobně zní "Jaká je hodnota normálního krevního tlaku?")* Odpověď: **b) 120/80mmHg**
+*(Poznámka: Externí zdravotnická znalost).*
+
+36. Který orgán filtruje krev? **c) ledviny**
+*(Poznámka: Zdroje popisují plíce pro dýchání a srdce jako pumpu, funkce ledvin je zde doplněna z externích znalostí).*
+
+37. Lymfa je: **b) filtrační a imunitní**.
+
+38. Jaký vliv má masáž na krevní oběh: **b) zlepšuje prokrvení**.
+
+42. Snížený krevní tlak se nazývá: **Hypotenze**
+*(Poznámka: Externí medicínská terminologie).*
+
+43. Zvýšený krevní tlak se nazývá: **b) hyrtenze** (správně psáno hypertenze)
+*(Poznámka: Externí medicínská terminologie).*
+
+44. Oběhový systém zajištuje: **b) transport látek**.
+
+45. Jaký vliv má správná masáž na srdce? **b) podporuje jeho činnost** (tím, že podporuje návrat žilní krve zpět k srdci).
+
+46. Zadržování lymfy způsobuje: **a) otok**.
+
+47. Pravidelná masáž podporuje: **b) regeneraci**.
+
+49. Masérské služby patří do: **a) vázaná živnost**.

@@ -1,4 +1,5 @@
 # Základy podnikání a živnost
+Zkratka EET, faktura, co musí faktura obsahovat, kdo vydává IČO (živnotenský úřad), Co je to IČO? Kdo kontroluje hygiena maséra (Krajská hygienická inspekce)? Co je zisk? Účetní doklad (dokument potvrzující něco ...)?
 
 Pokud se tím chceš živit, nesmíš mít jen zlaté ruce, ale taky musíš vědět, jak to funguje papírově a finančně. 
 

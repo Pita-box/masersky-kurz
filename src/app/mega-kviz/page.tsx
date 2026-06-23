@@ -8,11 +8,11 @@ export default function MegaKvizPage() {
     <div>
       <div style={{ marginBottom: 'var(--spacing-32)', textAlign: 'center' }}>
         <h1>Mega Kvíz</h1>
-        <p style={{ color: 'var(--color-stone)' }}>
+        <p className="mt-5" style={{ color: 'var(--color-stone)' }}>
           Trénink napříč všemi tématy. Stav kvízu se ukládá průběžně.
         </p>
       </div>
-      
+
       <MegaQuizEngine questions={allQuestions} />
     </div>
   );
